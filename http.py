@@ -29,9 +29,8 @@ def w7pe():
     baseurl="/windows/w7pe"
     loader=Wimboot(
         baseurl+"/BCD",
-        baseurl+"/boot.sdi",
-        baseurl+"/XM86.wim",
-        "XM86.wim"
+        baseurl+"/BOOT.SDI",
+        baseurl+"/BOOT.WIM",
     )
     return loader,
 
