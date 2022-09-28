@@ -18,7 +18,6 @@ def simple():
 	base=f"http://ftp.debian.org/debian/dists/{type}/main/installer-amd64/current/images/netboot/debian-installer/amd64"
 	loader.kernel(f"{base}/linux")
 	loader.initrd(f"{base}/initrd.gz")
-	loader.initrd(f"{base}/initrd.gz")
 	return loader,
 
 menu.item(item)
