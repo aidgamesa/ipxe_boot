@@ -26,7 +26,7 @@ menu.item(item)
 item=Item("windows 7 pe (BETA)")
 @item.function
 def w7pe():
-    baseurl="https://raw.githubusercontent.com/aidgamesa/ipxe_boot/main/windows/w7pe"
+    baseurl="http://raw.githubusercontent.com/aidgamesa/ipxe_boot/main/windows/w7pe"
     loader=Wimboot(
         baseurl+"/BCD",
         baseurl+"/boot.sdi",
