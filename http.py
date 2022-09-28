@@ -34,6 +34,8 @@ def w7pe():
     )
     return loader,
 
+menu.item(item)
+
 builder.add(menu)
 
 def app(environ, start_response):

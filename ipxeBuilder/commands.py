@@ -72,9 +72,7 @@ class Wimboot(Command):
         self.bcd, self.bootsdi, self.wimfile = bcd, bootsdi, wimfile
     
     def code(self):
-        ret = """
-kernel https://raw.githubusercontent.com/aidgamesa/ipxe_boot/main/windows/wimboot
+        return """kernel https://raw.githubusercontent.com/aidgamesa/ipxe_boot/main/windows/wimboot
 initrd {} BCD
 initrd {} boot.sdi
-initrd -n boot.wim {} boot.wim
-        """.format(self.bcd, self.bootsdi, self.wimfile)
+initrd -n boot.wim {} boot.wim""".format(self.bcd, self.bootsdi, self.wimfile)
