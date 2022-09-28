@@ -1,4 +1,5 @@
-from ipxeBuilder import Builder, Menu, Item, Echo, Loader
+from email.mime import base
+from ipxeBuilder import Builder, Menu, Item, Wimboot, Loader
 
 class Start:
 	def code():
@@ -9,7 +10,7 @@ builder.add(Start)
 
 menu=Menu("menu")
 
-item=Item("simple")
+item=Item("debian stable")
 @item.function
 def simple():
 	loader=Loader()
@@ -21,6 +22,17 @@ def simple():
 	return loader,
 
 menu.item(item)
+
+item=Item("windows 7 pe (BETA)")
+@item.function
+def w7pe():
+    baseurl="https://raw.githubusercontent.com/aidgamesa/ipxe_boot/main/windows/w7pe"
+    loader=Wimboot(
+        baseurl+"/BCD",
+        baseurl+"/boot.sdi",
+        baseurl+"/boot.wim"
+    )
+    return loader,
 
 builder.add(menu)
 

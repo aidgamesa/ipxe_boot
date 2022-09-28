@@ -65,3 +65,16 @@ class Loader(Command):
 			ret+=f"\ninitrd {i}"
 		ret+="\nboot\n"
 		return ret
+
+class Wimboot(Command):
+    def __init__(self, bcd, bootsdi, wimfile):
+        super().__init__()
+        self.bcd, self.bootsdi, self.wimfile = bcd, bootsdi, wimfile
+    
+    def code(self):
+        ret = """
+kernel https://raw.githubusercontent.com/aidgamesa/ipxe_boot/main/windows/wimboot
+initrd {} BCD
+initrd {} boot.sdi
+initrd -n boot.wim {} boot.wim
+        """.format(self.bcd, self.bootsdi, self.wimfile)
