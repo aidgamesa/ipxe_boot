@@ -67,12 +67,14 @@ class Loader(Command):
 		return ret
 
 class Wimboot(Command):
-    def __init__(self, bcd, bootsdi, wimfile):
+    def __init__(self, bcd, bootsdi, wimfile, wimfilename="boot.wim"):
         super().__init__()
-        self.bcd, self.bootsdi, self.wimfile = bcd, bootsdi, wimfile
+        self.bcd, self.bootsdi, self.wimfile, self.wimfilename = bcd, bootsdi, wimfile, wimfilename
     
     def code(self):
-        return """kernel http://raw.githubusercontent.com/aidgamesa/ipxe_boot/main/windows/wimboot
+        return """kernel /windows/wimboot
 initrd {} BCD
 initrd {} boot.sdi
-initrd -n boot.wim {} boot.wim""".format(self.bcd, self.bootsdi, self.wimfile)
+initrd /windows/bootmgr bootmgr
+initrd -n {} {} {}
+boot""".format(self.bcd, self.bootsdi, self.wimfilename, self.wimfile, self.wimfilename)
